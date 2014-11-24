@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>  
- <title>IT 207 Project Hoa</title>
+ <title>IT 207 Project hluu and jbae </title>
    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
