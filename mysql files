@@ -27,7 +27,3 @@ CREATE TABLE super(
     desc varchar(180),
     power varchar(180)
 );
-
-  
-  
-  );
