@@ -1,0 +1,33 @@
+CREATE TABLE admin(
+    adminId int(15) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    aName varchar(32) NOT NULL,
+    apWord char(5)
+);
+
+INSERT INTO admin VALUES (DEFAULT, 'admin', 'admin');
+
+CREATE TABLE user(
+    userID int(15) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    uname varchar(32) NOT NULL,
+    pWord char(5),
+    name varchar(32), 
+    address varchar (32),
+    city varchar(32),
+    state varchar(2),
+    zip int(5), 
+    email varchar(32),
+    pNum int(10)
+  );
+  
+CREATE TABLE super(
+    superID int(15) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    superName varchar(32),
+    comName varchar(32),
+    serName varchar(150),
+    desc varchar(180),
+    power varchar(180)
+);
+
+  
+  
+  );
