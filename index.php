@@ -43,20 +43,28 @@ echo "here you can admin login! but i havn't added this yet...";
 else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all super heroes
 {
 	echo '<h2>Here\'s a list of all heroes! </h2><br/>';
-				
+	
 	//connect to mysql database
 	$con = mysqli_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5');
 		if ($con ==FALSE){
 			echo "Error Connection: " . mysql_error();
 		}
-	
+
+	//print super heroes name, company name, and series name
+	$i = 1;
 	$com = "SELECT superName, comName, serName FROM super";
 	$result = mysqli_query($con, $com);
 	if (mysqli_num_rows($result) > 0){
 		while ($row = mysqli_fetch_assoc($result)){
-			echo '<b>' . $row['superName'] . '</b><br />';
-			echo $row['comName'] . '<br />';
-			echo $row['serName'] . '<br />';
+			echo '<table>';
+			echo '<tr>';
+			echo '<td>' . $i . '</td>';
+			echo '<td>';
+			echo '<b>Name: </b>' . $row['superName'] . '</b><br />';
+			echo '<b>Company: </b>' . $row['comName'] . '<br />';
+			echo '<b>Series: </b>' . $row['serName'] . '<br />';
+			echo '</td></tr></table>';
+			$i++;
 			echo '<hr /><br />';
 		}
 	}
