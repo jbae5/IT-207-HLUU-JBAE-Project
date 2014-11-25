@@ -73,8 +73,34 @@ else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all 
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes")//filter and print list of DC Comic Super Heroes
 {
-echo 'Here\'s a list of DC heroes! <br/>';
-echo '<img src="wip.jpg" height="50%" width="50%">';
+	echo '<h2>Here\'s a list of DC Comic heroes! </h2><br/>';
+				
+	//connect to mysql database
+	$con = mysqli_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5'); //change this to reflect database
+		if ($con ==FALSE){
+			echo "Error Connection: " . mysql_error();
+		}
+
+	//print super heroes name, company name, and series name that belong to company DC Comics
+	$i = 1;
+	$com = "SELECT superName, comName, serName FROM super WHERE comName = 'DC Comics'"; //sql command
+	$result = mysqli_query($con, $com);
+	if (mysqli_num_rows($result) > 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			echo '<table>';
+			echo '<tr>';
+			echo '<td>' . $i . '</td>';
+			echo '<td>';
+			echo '<b>' . $row['superName'] . '</b><br />';
+			echo '<b>Company: </b>' . $row['comName'] . '<br />';
+			echo '<b>Series: </b>' . $row['serName'] . '<br />';
+			echo '</td></tr></table>';
+			$i++;
+			echo '<hr /><br />';
+		}
+	}
+	else { echo "0 results";}
+	mysqli_close($con);
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes") //filter and print list of Marvel Super Heroes
 {
