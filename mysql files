@@ -32,8 +32,5 @@ CREATE TABLE super(
 INSERT INTO super VALUES
 (DEFAULT, 'Superman', 'male', 'DC Comics', 'Superman', 'From the planet Krypton, uses his solar-fuled powers to defend mankind against evil while under the alias Clark Kent.', 'Flight, Heat Vision, Super Hearing, Super Speed, Super Strength, Longevity'), 
 (DEFAULT, 'Iron Man', 'male', 'Marvel', 'Iron Man', 'Billionaire Tony Stark builds a powerful suit of armour to escape captivity. Later on upgrades his suit to protect the world.', 'Power suit, weapons master, insanely rich, access to gadgets and electricity'),
-(DEFAULT, 'Hercules', 'male', 'Disney', 'Hercules', 'Son of Zeus', 'Super strength, Immortal, Swordsmanship, Divine Powers'),
-(DEFAULT, 'Jack Sparrow', 'male', 'Disney', 'Pirates of the Caribbean', 'One of the nine pirate lords and captain of the Black Pearl, works best when drunk', 'Flees from danger, looting, drinking ridiculous amounts of rum, cunning.'), 
 (DEFAULT, 'Wonder Woman', 'female', 'DC Comics', 'Wonder Woman', 'Princess of the Amazons granted super powers by the gods of Olympus. Uses her powers to fight for peace in the U.S.', 'Super speed, Super strength, Flight, Longevity'), 
-(DEFAULT, 'Po', 'other', 'Dream Works', 'Kungfu Panda', 'Dragon Warrior and fellow warrior of the Jade Palace masters defending the Valley of Peace', 'Kungfu, makes mean noodles, ability to eat large amounts of food.'),
 (DEFAULT, 'Star-Lord', 'male', 'Marvel', 'Guardians of the Galaxy', 'Member of the Guardians of the Galaxy an intergalactic police force.', 'Master strategist, skilled marksmen, problem solver, close-combat expert');
