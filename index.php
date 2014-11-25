@@ -43,14 +43,28 @@ echo "here you can admin login! but i havn't added this yet...";
 else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all super heroes
 {
 	echo '<h2>Here\'s a list of all heroes! </h2><br/>';
+				
 	//connect to mysql database
-	$con = mysql_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5'); //change to reflect your database
+	$con = mysqli_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5');
 		if ($con ==FALSE){
 			echo "Error Connection: " . mysql_error();
 		}
 		else{
 			echo "connected";
 		}
+	
+	$com = "SELECT superName, comName, serName FROM super";
+	$result = mysqli_query($con, $com);
+	if (mysqli_num_rows($result) > 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			echo '<b>' . $row['superName'] . '</b><br />';
+			echo $row['comName'] . '<br />';
+			echo $row['serName'] . '<br />';
+			echo '<hr /><br />';
+		}
+	}
+	else { echo "0 results";}
+	mysqli_close($con);
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes")//filter and print list of DC Comic Super Heroes
 {
