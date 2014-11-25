@@ -49,9 +49,6 @@ else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all 
 		if ($con ==FALSE){
 			echo "Error Connection: " . mysql_error();
 		}
-		else{
-			echo "connected";
-		}
 	
 	$com = "SELECT superName, comName, serName FROM super";
 	$result = mysqli_query($con, $com);
