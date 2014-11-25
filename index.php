@@ -23,9 +23,10 @@ echo 'sample text: <br/>';
 echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ante odio, suscipit eget urna sed, aliquam dapibus diam. Cras a massa ut leo fringilla aliquam vitae at risus. Donec id eros consequat, porttitor sapien sit amet, lacinia ligula. Donec egestas vestibulum quam ut posuere. Nulla facilisi. Sed laoreet massa id arcu lobortis lobortis. Nulla et est non sapien porttitor malesuada. Phasellus vestibulum nec purus et pretium. Duis molestie nisi eu purus fermentum, id tempor orci malesuada. Pellentesque ornare, felis a vulputate elementum, massa elit vulputate mi, finibus mollis urna mauris id metus.";
 echo "Vivamus mauris tellus, viverra eu sapien vitae, consectetur auctor sapien. Nulla pharetra egestas justo, eget lobortis mauris faucibus ac. Curabitur imperdiet egestas augue non viverra. Duis vel nisl purus. Vestibulum velit nisi, efficitur nec lectus a, consequat mollis purus. Duis sem nisl, auctor at turpis sed, tempus consectetur diam. Integer quis molestie urna. Aliquam tempus, mi in pulvinar pellentesque, massa sem mollis ante, ac posuere lacus neque non massa. Cras eu ligula ultricies, hendrerit augue a, iaculis dolor. Aliquam sapien nulla, vehicula a viverra ac, egestas sed neque. Morbi pellentesque tincidunt ex, ac molestie quam. In laoreet facilisis turpis, sit amet vestibulum neque vestibulum non. Aliquam elementum mi.";
 }
-else if(isset($_GET["links"])&&$_GET["links"]=="about")
+else if(isset($_GET["links"])&&$_GET["links"]=="about") //about page
 {
-echo "here we can talk about ourselves, i'm not sure why we need to but this page part is here if we need to...";
+      echo "<h2>About:</h2>";
+      echo "<p>Welcome to Hire a Super Hero. While all is good in the world, super heroes are looking for temporary employment. Here you can find and hire super heroes according to your needs. </p>";
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="registration")
 {
@@ -39,17 +40,17 @@ else if(isset($_GET["links"])&&$_GET["links"]=="alogin")
 {
 echo "here you can admin login! but i havn't added this yet...";
 }
-else if(isset($_GET["links"])&&$_GET["links"]=="allheroes")
+else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all super heroes
 {
 echo 'Here\'s a list of all heroes! <br/>';
 echo '<img src="wip.jpg" height="50%" width="50%">';
 }
-else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes")
+else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes")//filter and print list of DC Comic Super Heroes
 {
 echo 'Here\'s a list of DC heroes! <br/>';
 echo '<img src="wip.jpg" height="50%" width="50%">';
 }
-else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes")
+else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes") //filter and print list of Marvel Super Heroes
 {
 echo 'Here\'s a list of Marvel heroes! <br/>';
 echo '<img src="wip.jpg" height="50%" width="50%">';
