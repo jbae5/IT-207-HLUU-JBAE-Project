@@ -42,8 +42,15 @@ echo "here you can admin login! but i havn't added this yet...";
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all super heroes
 {
-echo 'Here\'s a list of all heroes! <br/>';
-echo '<img src="wip.jpg" height="50%" width="50%">';
+	echo '<h2>Here\'s a list of all heroes! </h2><br/>';
+	//connect to mysql database
+	$con = mysql_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5'); //change to reflect your database
+		if ($con ==FALSE){
+			echo "Error Connection: " . mysql_error();
+		}
+		else{
+			echo "connected";
+		}
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes")//filter and print list of DC Comic Super Heroes
 {
