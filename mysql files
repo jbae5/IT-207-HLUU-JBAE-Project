@@ -24,6 +24,6 @@ CREATE TABLE super(
     superName varchar(32),
     comName varchar(32),
     serName varchar(150),
-    desc varchar(180),
-    power varchar(180)
+    supDesc TEXT,
+    power TEXT
 );
