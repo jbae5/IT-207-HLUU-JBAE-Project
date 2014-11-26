@@ -43,7 +43,7 @@ echo "here you can admin login! but i havn't added this yet...";
 else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all super heroes
 {
 	echo '<h2>Here\'s a list of all heroes! </h2><br/>';
-	
+				
 	//connect to mysql database
 	$con = mysqli_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5'); //change this to reflect your database
 		if ($con ==FALSE){
@@ -52,23 +52,47 @@ else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all 
 
 	//print super heroes name, company name, and series name
 	$i = 1;
-	$com = "SELECT superName, comName, serName FROM super";
-	$result = mysqli_query($con, $com);
-	if (mysqli_num_rows($result) > 0){
-		while ($row = mysqli_fetch_assoc($result)){
-			echo '<table>';
-			echo '<tr>';
-			echo '<td id="count">' . $i . '</td>';
-			echo '<td>';
-			echo '<b id="name">' . $row['superName'] . '</b><br />';
-			echo '<b>Company: </b>' . $row['comName'] . '<br />';
-			echo '<b>Series: </b>' . $row['serName'] . '<br />';
-			echo '</td></tr></table>';
-			$i++;
-			echo '<hr /><br />';
+	if(isset($_GET['name'])){ //view specifics of a single super hero
+		$com = "SELECT * FROM super WHERE superName ='" . $_GET['name'] . "'";
+		$result = mysqli_query($con, $com);
+		if(mysqli_num_rows($result) > 0){
+			while ($row = mysqli_fetch_assoc($result)){
+				echo '<table border="1">';
+				echo '<tr>';
+					echo '<td><b>' . $row['superName'] . '</b></td>';
+					echo '<td>Gender: ' . $row['gender'] . '</td>';
+				echo '</tr>';
+				echo '<tr>';
+					echo '<td>Company: ' . $row['comName'] .'</td>';
+					echo '<td>Series: ' . $row['serName']  .'</td>';
+				echo '</tr>';
+				echo '<tr><td colspan="2">'. $row['supDesc'] .'</td></tr>';
+				echo '<tr><td colspan="2">Powers: '. $row['power'] .'</td></tr>';
+				echo '</table>';
+			}
 		}
 	}
-	else { echo "0 results";}
+	else{
+		$com = "SELECT superName, comName, serName FROM super";
+		$result = mysqli_query($con, $com);
+		if (mysqli_num_rows($result) > 0){
+			while ($row = mysqli_fetch_assoc($result)){
+				echo '<table>';
+				echo '<tr>';
+				echo '<td id="count">' . $i . '</td>';
+				echo '<td>';
+				echo '<b id="name"><a href="index.php?links=allheroes' . '&&name=' . $row['superName'] . '">'; 
+				echo $row['superName'] . '</a></b><br />';
+				echo '<b>Company: </b>' . $row['comName'] . '<br />';
+				echo '<b>Series: </b>' . $row['serName'] . '<br />';
+				echo '</td></tr></table>';
+				$i++;
+				echo '<hr /><br />';
+			}
+		}
+		else { echo "0 results";}
+	}
+
 	mysqli_close($con);
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes") //print all DC Comic heroes
