@@ -107,24 +107,47 @@ else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes") //print all DC Comic 
 
 	//print super heroes name, company name, and series name that belong to company DC Comics
 	$i = 1;
-	$com = "SELECT superName, comName, serName FROM super WHERE comName = 'DC Comics'"; //sql command
-	$result = mysqli_query($con, $com);
-	if (mysqli_num_rows($result) > 0){
-		while ($row = mysqli_fetch_assoc($result)){
-			echo '<table>';
-			echo '<tr>';
-			echo '<td id="count">' . $i . '</td>';
-			echo '<td>';
-			echo '<b id="name">' . $row['superName'] . '</b><br />';
-			echo '<b>Company: </b>' . $row['comName'] . '<br />';
-			echo '<b>Series: </b>' . $row['serName'] . '<br />';
-			echo '</td></tr></table>';
-			$i++;
-			echo '<hr /><br />';
+	if(isset($_GET['name'])){
+		$com = "SELECT * FROM super WHERE superName ='" . $_GET['name'] . "'";
+		$result = mysqli_query($con, $com);
+		if(mysqli_num_rows($result) > 0){
+			while ($row = mysqli_fetch_assoc($result)){
+				echo '<table border="1">';
+				echo '<tr>';
+					echo '<td><b>' . $row['superName'] . '</b></td>';
+					echo '<td>Gender: ' . $row['gender'] . '</td>';
+				echo '</tr>';
+				echo '<tr>';
+					echo '<td>Company: ' . $row['comName'] .'</td>';
+					echo '<td>Series: ' . $row['serName']  .'</td>';
+				echo '</tr>';
+				echo '<tr><td colspan="2">'. $row['supDesc'] .'</td></tr>';
+				echo '<tr><td colspan="2">Powers: '. $row['power'] .'</td></tr>';
+				echo '</table>';
+			}
 		}
 	}
-	else { echo "0 results";}
-	mysqli_close($con);
+	else{
+		$com = "SELECT superName, comName, serName FROM super WHERE comName = 'DC Comics'"; //sql command
+		$result = mysqli_query($con, $com);
+		if (mysqli_num_rows($result) > 0){
+			while ($row = mysqli_fetch_assoc($result)){
+				echo '<table>';
+				echo '<tr>';
+				echo '<td id="count">' . $i . '</td>';
+				echo '<td>';
+				echo '<b id="name"><a href="index.php?links=allheroes' . '&&name=' . $row['superName'] . '">'; 
+				echo $row['superName'] . '</a></b><br />';
+				echo '<b>Company: </b>' . $row['comName'] . '<br />';
+				echo '<b>Series: </b>' . $row['serName'] . '<br />';
+				echo '</td></tr></table>';
+				$i++;
+				echo '<hr /><br />';
+			}
+		}
+		else { echo "0 results";}
+		mysqli_close($con);
+	}
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes") //print all Marvel heroes
 {
