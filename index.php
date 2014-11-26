@@ -159,6 +159,7 @@ else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes") //print all Marve
 		}
 
 	//print super heroes name, company name, and series name that belong to company Marvel
+	$i = 1;
 	if(isset($_GET['name'])){
 		$com = "SELECT * FROM super WHERE superName ='" . $_GET['name'] . "'";
 		$result = mysqli_query($con, $com);
