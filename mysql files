@@ -39,6 +39,7 @@ INSERT INTO super VALUES
 (DEFAULT, 'Wolverine', 'male', 'Marvel', 'X-Men', 'Long-lived mutant and member of the X-Men.', 'Healing, Enhanced Senses, Adamantium Claws'),
 (DEFAULT, 'Mr. Fantastic', 'male', 'Marvel', 'Fantastic Four', 'One of the smartest men and Leader of the Fantastic Four', 'Elasticity, Intellect, Size Manipulation, Leadership'),
 (DEFAULT, 'Storm', 'female', 'Marvel', 'X-Men', 'Member of the X-Men and is head mistress of the Jean Grey School', 'Weather control, Flight, Danger Sense, Earth/Dimensional Manipulation'), 
-(DEFAULT, '', '', '', '', '', ''),
+(DEFAULT, 'Aquaman', 'male', 'DC Comics', 'Justice League America', 'Founding member of Justice League and son of Atlantean noble', 'Sub-mariner, Telepathy, Water Control, Radar Sense'),
+(DEFAULT, 'The Flash', 'male', 'DC Comics', 'Justice League America', 'The fastest man alive and founding member of Justice League', 'Super speed, Stamina, Time Travel')
 );
 
