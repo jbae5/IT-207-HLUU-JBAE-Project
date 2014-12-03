@@ -210,8 +210,13 @@ echo "Vivamus mauris tellus, viverra eu sapien vitae, consectetur auctor sapien.
 ?>
  </td>
 <td id="search" colspan="2">
- Search Engine here! <br/>
- View Heroes:
+Search Engine here! <br/><br />
+	 <form action="index.php" method="GET">
+		 Search Term: <input type="text" name="search"><br/>
+		 <input type="submit" value="Search">
+	 </form>
+	 <br/>
+View Heroes by Company:	 
  <ul>
  <li> <a href="index.php?links=allheroes">All Heroes</a> </li>
  <li> <a href="index.php?links=dcheroes">DC Heroes</a> </li>
