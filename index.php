@@ -122,7 +122,6 @@ if($goodToGo==true)
 		
 		mysqli_close($db);
 }
-
 else
 echo $errorList;
 }
@@ -132,14 +131,14 @@ else
 				<form action="index.php?links=registration&&completion=yes" method="post">
 				<h3> Registration </h3>
 				User Name:<input type="text" name="uName"> <br/>
-				Password(5 CHAR MAX):<input type="password" name="pWord"><br/>
+				Password(5 CHAR MAX):<input type="password" name="pWord" maxlength="5"><br/>
 				Name:<input type="text" name="fName"><br/>
 				Address:<input type="text" name="address"><br/>
 				City:<input type="text" name="city"><br/>
-				State(2 CHAR MAX):<input type="text" name="state"><br/>
-				Zip(5 CHAR max):<input type="text" name="zip"><br/>
+				State(2 CHAR MAX):<input type="text" name="state" maxlength="2"><br/>
+				Zip(5 CHAR max):<input type="text" name="zip" maxlength="5"><br/>
 				Email:<input type="text" name="email"><br/>
-				Phone(10 CHAR Max):<input type="text" name="pNum"><br/>
+				Phone(10 CHAR Max):<input type="text" name="pNum" maxlength="10"><br/>
 				<input type="submit" value="Add In">
 				</form>
 <?php
@@ -147,13 +146,12 @@ else
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="clogin")
 {
-/*code plays backwords
+/*code plays backwards
 1.User info is updated and user gets to see their newly updated info
 2.User edits account info
 3.User is greeted and given options on what to do
 4.User enters information
 */
-
 //1. user info is updated and user gets to see their new info
 if((isset($_GET['completion'])&&$_GET['completion']=='step2')&&(isset($_GET['do'])&&$_GET['do']=='manage'))
 {
@@ -250,7 +248,6 @@ if($goodToGo==true)
 				
 				
 		mysqli_close($db);
-
 }
 		else
 		{
@@ -343,7 +340,7 @@ else
 				<form action="index.php?links=clogin&&completion=step1" method="post">
 				<h3> Customer Login </h3>
 				User Name:<input type="text" name="uName"> <br/>
-				Password(5 CHAR MAX):<input type="password" name="pWord"><br/>
+				Password:<input type="password" name="pWord" maxlength="5"><br/>
 				<input type="submit" value="Login">
 				</form>
 <?php
@@ -363,7 +360,6 @@ else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all 
 		if ($con ==FALSE){
 			echo "Error Connection: " . mysql_error();
 		}
-
 	//print super heroes name, company name, and series name
 	$i = 1;
 	if(isset($_GET['name'])){ //view specifics of a single super hero
@@ -406,7 +402,6 @@ else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all 
 		}
 		else { echo "0 results";}
 	}
-
 	mysqli_close($con);
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes") //print all DC Comic heroes
@@ -418,7 +413,6 @@ else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes") //print all DC Comic 
 		if ($con ==FALSE){
 			echo "Error Connection: " . mysql_error();
 		}
-
 	//print super heroes name, company name, and series name that belong to company DC Comics
 	$i = 1;
 	if(isset($_GET['name'])){
@@ -471,7 +465,6 @@ else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes") //print all Marve
 		if ($con ==FALSE){
 			echo "Error Connection: " . mysql_error();
 		}
-
 	//print super heroes name, company name, and series name that belong to company Marvel
 	$i = 1;
 	if(isset($_GET['name'])){
@@ -515,6 +508,10 @@ else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes") //print all Marve
 		else { echo "0 results";}
 		mysqli_close($con);
 	}
+}
+elseif(isset($_GET['search'])){
+	echo "<b>Results for Search Term: </b>" . $_GET['search'];
+
 }
 else
 {
