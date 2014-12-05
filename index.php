@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>  
- <title>IT 207 Project hluu and jbae </title>
+ <title>IT 207 | Hire a Super Hero </title>
    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
@@ -20,7 +20,7 @@
  if(isset($_GET["links"])&&$_GET["links"]=="about") //about page
 {
       echo "<h2>About:</h2>";
-      echo "<p>Welcome to Hire a Super Hero. While all is good in the world, super heroes are looking for temporary employment. Here you can find and hire super heroes according to your needs. </p>";
+      echo "<p>Welcome to Hire a Super Hero. While all is good in the world, super heroes are looking for temporary employment. Here you can find and hire super heroes according to your needs. </p><p>This website was created for educational purposes. You cannot actually hire super heroes using this website.</p>";
 }
 //registration forms for customers
 else if(isset($_GET["links"])&&$_GET["links"]=="registration")
