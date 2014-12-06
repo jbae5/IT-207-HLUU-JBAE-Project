@@ -371,7 +371,7 @@ else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all 
 			while ($row = mysqli_fetch_assoc($result)){
 				echo '<table border="1">';
 				echo '<tr>';
-					echo '<td><b>' . $row['superName'] . '</b></td>';
+					echo '<td><b id="name">' . $row['superName'] . '</b></td>';
 					echo '<td>Gender: ' . $row['gender'] . '</td>';
 				echo '</tr>';
 				echo '<tr>';
@@ -425,7 +425,7 @@ else if(isset($_GET["links"])&&$_GET["links"]=="dcheroes") //print all DC Comic 
 			while ($row = mysqli_fetch_assoc($result)){
 				echo '<table border="1">';
 				echo '<tr>';
-					echo '<td><b>' . $row['superName'] . '</b></td>';
+					echo '<td><b id="name">' . $row['superName'] . '</b></td>';
 					echo '<td>Gender: ' . $row['gender'] . '</td>';
 				echo '</tr>';
 				echo '<tr>';
@@ -477,7 +477,7 @@ else if(isset($_GET["links"])&&$_GET["links"]=="marvelheroes") //print all Marve
 			while ($row = mysqli_fetch_assoc($result)){
 				echo '<table border="1">';
 				echo '<tr>';
-					echo '<td><b>' . $row['superName'] . '</b></td>';
+					echo '<td><b id="name">' . $row['superName'] . '</b></td>';
 					echo '<td>Gender: ' . $row['gender'] . '</td>';
 				echo '</tr>';
 				echo '<tr>';
