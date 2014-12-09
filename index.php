@@ -9,7 +9,8 @@
 <body>
 <table id="main">
 <tr>
-<th id="top" colspan="5">IT 207 Project! possibly banner?</th>
+<!--  BANNER	 -->
+<th id="top" colspan="5"> </th>
 </tr>
 <tr>
 <th id="links" colspan="5"> <a href="index.php">Home</a> | <a href="index.php?links=allheroes">Super Heroes</a> | <a href="index.php?links=about">About</a> | <a href="index.php?links=registration">Customer Registration</a> | <a href="index.php?links=clogin">Customer Login</a> | <a href="index.php?links=alogin">Admin Login</a></th>
@@ -131,14 +132,14 @@ else
 				<form action="index.php?links=registration&&completion=yes" method="post">
 				<h3> Registration </h3>
 				User Name:<input type="text" name="uName"> <br/>
-				Password(5 CHAR MAX):<input type="password" name="pWord" maxlength="5"><br/>
+				Password:<input type="password" name="pWord" maxlength="5"><br/>
 				Name:<input type="text" name="fName"><br/>
 				Address:<input type="text" name="address"><br/>
 				City:<input type="text" name="city"><br/>
-				State(2 CHAR MAX):<input type="text" name="state" maxlength="2"><br/>
-				Zip(5 CHAR max):<input type="text" name="zip" maxlength="5"><br/>
+				State:<input type="text" name="state" maxlength="2"><br/>
+				Zip:<input type="text" name="zip" maxlength="5"><br/>
 				Email:<input type="text" name="email"><br/>
-				Phone(10 CHAR Max):<input type="text" name="pNum" maxlength="10"><br/>
+				Phone:<input type="text" name="pNum" maxlength="10"><br/>
 				<input type="submit" value="Add In">
 				</form>
 <?php
