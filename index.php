@@ -251,6 +251,7 @@ if($goodToGo==true)
 }
 		else
 		{
+		echo $errorList;
 		?>
 				<form action="index.php?links=clogin&&completion=step1links=clogin&&completion=step1&&do=manage" method="post">
 				<h3> Input Invalid </h3>
@@ -349,7 +350,173 @@ else
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="alogin")
 {
-echo "here you can admin login! but i havn't added this yet...";
+if((isset($_GET['completion'])&&$_GET['completion']=='step2')&&(isset($_GET['do'])&&$_GET['do']=='manage'))
+{
+
+$errorList='';
+$goodToGo=true;
+if(!isset($_POST['superName'])||trim($_POST['superName'])=='')
+{
+$errorList.='Name not set<br/>';
+$goodToGo=false;
+}
+if(!isset($_POST['gender'])||trim($_POST['gender'])=='')
+{
+$errorList.='gender not set<br/>';
+$goodToGo=false;
+}
+if(!isset($_POST['comName'])||trim($_POST['comName'])=='')
+{
+$errorList.='Comic Name not set<br/>';
+$goodToGo=false;
+}
+if(!isset($_POST['serName'])||trim($_POST['serName'])=='')
+{
+$errorList.='Series not set<br/>';
+$goodToGo=false;
+}
+if(!isset($_POST['supDesc'])||trim($_POST['supDesc'])=='')
+{
+$errorList.='Description not set<br/>';
+$goodToGo=false;
+}
+if(!isset($_POST['power'])||trim($_POST['power'])=='')
+{
+$errorList.='Super power not set<br/>';
+$goodToGo=false;
+}
+if($goodToGo==true)
+{
+echo "Success!";
+
+		$db = mysqli_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5');
+		if ($db ==FALSE){
+			echo "Error Connection: " . mysql_error();
+		}
+		$query = "INSERT INTO super VALUES(DEFAULT,'" . $_POST['superName'] . "','" . $_POST['gender'] . "','" . $_POST['comName'] . "','" . $_POST['serName'] . "','" . $_POST['supDesc'] . "','" . $_POST['power'] . "')";
+		mysqli_query($db, $query);
+		?>
+				<form action="index.php?links=alogin&&completion=step1" method="post">
+				<input type="hidden" name="uName" value="<?php echo $_POST['uName']?>">
+				<input type="hidden" name="pWord" value="<?php echo $_POST['pWord']?>">
+				<input type="submit" value="Return to menu">
+				</form>
+				
+				<form action="index.php?links=allheroes&&name=<?php echo $_POST['superName']; ?>" method="post">
+				<input type="hidden" name="uName" value="<?php echo $_POST['uName']?>">
+				<input type="hidden" name="pWord" value="<?php echo $_POST['pWord']?>">
+				<input type="submit" value="View entry added">
+				</form>
+		<?php
+}
+		else
+		{
+		echo $errorList;
+		?>
+				<form action="index.php?links=alogin&&completion=step1&&do=manage" method="post">
+				<h3> Input Invalid </h3>
+				<input type="submit" value="Try Again?">
+				<input type="hidden" name="uName" value="<?php echo $_POST['uName']?>">
+				<input type="hidden" name="pWord" value="<?php echo $_POST['pWord']?>">
+				</form>
+		<?php
+		}
+
+}
+	else if((isset($_GET['completion'])&&$_GET['completion']=='step1')&&(isset($_GET['do'])&&$_GET['do']=='manage'))
+		{
+					?>
+				<form action="index.php?links=alogin&&completion=step2&&do=manage" method="post">
+				<h3> Enter Hero Info </h3>
+				All fields need to be filled <br/>
+				Name:<input type="text" name="superName"> <br/>
+				Gender:<select  name="gender" > <option value="Male"> Male</option> <option value="Female"> Female</option> <option value="Undefined"> Undefined</option> </select><br/>
+				Comic Name:<select  name="comName" > <option value="DC Comics"> DC Comics</option> <option value="Marvel"> Marvel</option></select> <br/>
+				Series:<input type="text" name="serName"> <br/>
+				Description:<br/><textarea name="supDesc"></textarea> <br/>
+				Power:<br/><textarea name="power"></textarea> <br/><br/>
+				
+				<input type="hidden" name="uName" value="<?php echo $_POST['aName']?>">
+				<input type="hidden" name="pWord" value="<?php echo $_POST['apWord']?>">
+				
+				<input type="submit" value="Add">
+				</form>
+					<?php
+		}
+		//giving options
+		else if(isset($_GET['completion'])&&$_GET['completion']=='step1')
+		{
+		$db = mysqli_connect('helios.ite.gmu.edu', 'jbae5', 'IT207', 'jbae5');
+		if ($db ==FALSE){
+			echo "Error Connection: " . mysql_error();
+		}
+		$query = "SELECT * FROM admin WHERE aName ='" . $_POST['aName'] . "' AND apWord ='" . $_POST['apWord'] . "' ";
+		$result = mysqli_query($db, $query);
+		//password entry is show successful below
+		//3. user is greeted on what to do
+		if(mysqli_num_rows($result) > 0)
+		{
+		
+			while ($row = mysqli_fetch_assoc($result)){
+		echo 'Hello, '.$row['aName'].'<br/> What would you like to do today?';
+		}
+			?>
+				<form action="index.php?links=alogin&&completion=step1&&do=manage" method="post">
+				
+				<input type="hidden" name="aName" value="<?php echo $_POST['aName']?>">
+				<input type="hidden" name="apWord" value="<?php echo $_POST['apWord']?>">
+				
+				<input type="submit" value="Enter a hero into the database">
+				</form>
+				<form action="wip.jpg" method="post">
+				
+				<input type="submit" value="Do something awesome">
+				</form>
+			<?php
+		}
+		else
+		{
+		echo 'No such admin name and password combination exist';
+		}
+		mysqli_close($db);
+		}
+		//4. Admin inputs login information, there is also a auto fill button for grader to access admin section
+		else if(isset($_GET['auto'])&&$_GET['auto']=='yes')
+		{
+?>
+				<form action="index.php?links=alogin&&completion=step1" method="post">
+				<h3> Admin Login </h3>
+				
+				User Name:<input type="text"name="aName"  value="admin" > <br/>
+				Password:<input type="password" name="apWord" value="admin" maxlength="5"><br/>
+				<input type="submit" value="Login">
+				</form>
+				<form action="index.php?links=alogin&&auto=yes" method="GET">
+				<input type="submit" value="Auto Fill">
+				</form>
+<?php
+}
+else
+{// the auto fill is acting weird so i had to do a work around and put links and auto in the hidden field otherwise it would just display the home page
+?>
+				<form action="index.php?links=alogin&&completion=step1" method="post">
+				<h3> Admin Login </h3>
+				
+				User Name:<input type="text" name="aName"> <br/>
+				Password:<input type="password" name="apWord" maxlength="5"><br/>
+				<input type="submit" value="Login">
+				</form>
+				
+				<form action="index.php?links=alogin&&auto=yes" method="GET">
+				<input type="hidden" name="links" value="alogin">
+				<input type="hidden" name="auto" value="yes">
+				<input type="submit" value="Auto Fill">
+				</form>
+<?php
+}
+
+
+
 }
 else if(isset($_GET["links"])&&$_GET["links"]=="allheroes") //print list of all super heroes
 {
