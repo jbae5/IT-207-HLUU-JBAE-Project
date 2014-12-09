@@ -322,10 +322,6 @@ if($goodToGo==true)
 				
 				<input type="submit" value="Manage Accounts">
 				</form>
-				<form action="wip.jpg" method="post">
-				
-				<input type="submit" value="Do something awesome">
-				</form>
 			<?php
 		}
 		else
@@ -467,10 +463,6 @@ echo "Success!";
 				<input type="hidden" name="apWord" value="<?php echo $_POST['apWord']?>">
 				
 				<input type="submit" value="Enter a hero into the database">
-				</form>
-				<form action="wip.jpg" method="post">
-				
-				<input type="submit" value="Do something awesome">
 				</form>
 			<?php
 		}
