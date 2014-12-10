@@ -9,7 +9,7 @@
 <body>
 <table id="main">
 <tr>
-<th id="top" colspan="5"><img src="super.jpg" style="width:100%"/> </th>
+<th id="top" colspan="5"><img src="super.jpg" style="width:100%;height:150px;"/> </th>
 </tr>
 <tr>
 <th id="links" colspan="5"> <a href="index.php">Home</a> | <a href="index.php?links=allheroes">Super Heroes</a> | <a href="index.php?links=about">About</a> | <a href="index.php?links=registration">Customer Registration</a> | <a href="index.php?links=clogin">Customer Login</a> | <a href="index.php?links=alogin">Admin Login</a></th>
